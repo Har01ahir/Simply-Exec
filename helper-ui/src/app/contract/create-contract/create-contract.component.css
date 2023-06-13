@@ -1,0 +1,96 @@
+
+.container {
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+.container-customer {
+    background-color: white; 
+    padding: 50px 20px 50px 20px; 
+    border-radius: .35rem;
+    position: relative;
+    top: 80px;
+    /* bottom: 90px; */
+    width: 550px;
+    padding-top: 40px;
+    height: 500px;
+}
+
+.container-vendor {
+    background-color: white; 
+    padding: 50px 20px 50px 20px; 
+    border-radius: .35rem;
+    position: relative;
+    left: 710px;
+    bottom: 500px;
+    width: 550px;
+    padding-top: 40px;
+    height: 500px;
+}
+img {
+    position: relative;
+    bottom: 200px;
+    height: 80px; 
+    width: 100px;
+}
+
+.container .btn {
+    position: relative;
+    bottom: 460px;
+    /* color: #00ffe391; */
+    width: 300px;
+    /* background-color: #2e2b1c; */
+}
+.container .btn:hover, .container-xs .btn:hover {
+    border: .25px solid rgb(128, 199, 239);
+}
+
+.container-xs {
+    background-color: white;
+    width: 500px;
+    height: 130px;
+    padding-top: 20px;
+    border-radius: .25rem;
+    position: relative;
+    top: 200px;
+    left: 500px;
+}
+
+.container-xs .btn {
+    width: 80px;
+    height: 40px;
+    padding-left: 10px;
+}
+
+.btn-back {
+    border-radius: 0.25rem;
+    border: 0.0rem;
+    width: 120px;
+    height: 40px;
+    color: blue;
+    padding-left: 10px;
+    position: relative;
+    top: 75px;
+    right: 570px;
+}
+.btn-back:hover {
+    border: 1px solid rgb(92, 92, 236);
+}
+.btn-back:focus {
+    border: blue;
+}
+
+.example-form {
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+  }
+  
+  .example-full-width {
+    width: 100%;
+  }
+
+.form-group label {
+    align-items: start;
+}
+  

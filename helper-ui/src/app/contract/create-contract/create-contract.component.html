@@ -1,0 +1,74 @@
+<button class="btn-back" *ngIf="!clickedSubmit" type="button" routerLink="../">Back</button>
+<div class="container" *ngIf="!clickedSubmit">
+	<Form>
+		<div class="container-customer">
+			<!-- <div class="container-fluid" style="background-color: rgb(126, 126, 234); height: 60px;"> -->
+			<!-- <p style="color: white; margin-top: 0rem; background-color: rgb(127, 127, 237); height: 60px;margin-top: 0rem; margin-block-start: 20px;">Customer-information</p> -->
+			<!-- </div> -->
+			<div class="form-group">
+				<label for="customer-name">Customer Name</label>
+				<input 
+				  type="text" 
+					id="customer-name" 
+					class="form-control" 
+					ngModel 
+					name="customer-name">
+			</div>
+
+			<div class="form-group">
+				<label for="customer-name"> Phone </label>
+				<input 
+				  type="tel" 
+					id="phone" 
+					class="form-control" 
+					ngModel 
+					name="phone">
+			</div>
+
+			<div class="form-group">
+				<label for="customer-name">Mail</label>
+				<input 
+				  type="email" 
+					id="email" 
+					class="form-control" 
+					ngModel 
+					name="email">
+			</div>
+
+			<!-- <form class="example-form">
+				<mat-form-field class="example-full-width">
+					<input matInput placeholder="Favorite food" value="Sushi">
+				</mat-form-field>
+			
+				<mat-form-field class="example-full-width">
+					<textarea matInput placeholder="Leave a comment"></textarea>
+				</mat-form-field>
+			</form> -->
+			
+
+			
+		</div>
+		<img src="https://i.gifer.com/ZSj6.gif" alt="handShake GIF">
+		<div class="container-vendor">
+			
+		</div>
+	
+		<button class="btn btn-primary" type="button" (click)="clickedSubmit=true">Submit</button>
+	</Form>
+	
+</div>
+
+<div class="container-xs" *ngIf="clickedSubmit">
+	<p style="color: green; font-size: larger;">Contract has been created Succesully!</p>
+	
+	<!-- <button class="btn btn-primary">Cancel</button> -->
+	
+	<button class="btn btn-primary" [routerLink]="['/contract/view-contracts']">Ok</button>
+	
+</div>
+
+
+
+
+
+

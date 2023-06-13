@@ -1,0 +1,13 @@
+.container-fluid {
+    position: fixed;
+    justify-content: center;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('https://wallpaperaccess.com/full/51363.jpg');
+    background-size: cover;
+    z-index: 1;
+    text-align: center;
+  }
+  
