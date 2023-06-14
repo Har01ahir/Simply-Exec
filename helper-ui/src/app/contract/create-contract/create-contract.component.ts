@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { Form, NgForm } from '@angular/forms';
+import { HttpClient } from '@angular/common/http'
+// import { Form, NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-create-contract',
@@ -9,8 +10,12 @@ import { Form, NgForm } from '@angular/forms';
 export class CreateContractComponent {
   clickedSubmit = false;
 
-  onSubmit(form: NgForm) {
-    
+  constructor() {}
+
+  onSubmit() {
+    this.clickedSubmit=true;
+    // alert("Submitted Here!");
+    // this.http.get('http://localhost:4200/contract/create-contract');
   }
 
 }

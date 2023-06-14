@@ -1,6 +1,6 @@
 import { Contract } from 'src/contract/contract.entity';
 import { BaseEntity, Entity, PrimaryGeneratedColumn, ManyToOne, Column } from 'typeorm';
-import { PaymentStatus } from './payment-status.enum';
+import { PaymentStatus } from '../contract/payment-status.enum';
 
 @Entity()
 export class Payment extends BaseEntity {

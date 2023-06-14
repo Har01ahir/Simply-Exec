@@ -1,7 +1,7 @@
 import { BaseEntity, Column, Entity, ManyToOne, PrimaryGeneratedColumn, OneToMany } from 'typeorm';
 import { Customer } from '../customer/customer.entity';
 import { ContractStatus } from './contract-status.enum';
-import { PaymentStatus } from '../payment/payment-status.enum';
+import { PaymentStatus } from './payment-status.enum';
 import { VendorDeliveryStatus } from './vendor-delivery-status.enum';
 import { Vendor } from 'src/vendor/vendor.entity';
 import { Payment } from 'src/payment/payment.entity';
