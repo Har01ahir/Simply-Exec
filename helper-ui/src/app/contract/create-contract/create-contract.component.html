@@ -1,60 +1,46 @@
-<button class="btn-back" *ngIf="!clickedSubmit" type="button" routerLink="../">Back</button>
 <div class="container" *ngIf="!clickedSubmit">
-	<Form>
+	<button class="btn-back" type="button" routerLink="../">Back</button>
+	<form (ngSubmit)="onSubmit()" #f="ngForm">
 		<div class="container-customer">
-			<!-- <div class="container-fluid" style="background-color: rgb(126, 126, 234); height: 60px;"> -->
-			<!-- <p style="color: white; margin-top: 0rem; background-color: rgb(127, 127, 237); height: 60px;margin-top: 0rem; margin-block-start: 20px;">Customer-information</p> -->
-			<!-- </div> -->
-			<div class="form-group">
-				<label for="customer-name">Customer Name</label>
-				<input 
-				  type="text" 
-					id="customer-name" 
-					class="form-control" 
-					ngModel 
-					name="customer-name">
+			<div class="cust-header">
+				<p>Customer</p>
 			</div>
-
 			<div class="form-group">
-				<label for="customer-name"> Phone </label>
-				<input 
-				  type="tel" 
-					id="phone" 
-					class="form-control" 
-					ngModel 
-					name="phone">
+				<label for="customer-name">Name</label>
+				<input type="text" id="customer-name" class="form-control" [(ngModel)]="answer" name="customer-name" required>
 			</div>
-
+			
 			<div class="form-group">
-				<label for="customer-name">Mail</label>
-				<input 
-				  type="email" 
-					id="email" 
-					class="form-control" 
-					ngModel 
-					name="email">
+				<label for="customer-phone"> Phone </label>
+				<input type="tel" id="customer-phone" class="form-control" ngModel name="customer-phone" required>
 			</div>
-
-			<!-- <form class="example-form">
-				<mat-form-field class="example-full-width">
-					<input matInput placeholder="Favorite food" value="Sushi">
-				</mat-form-field>
-			
-				<mat-form-field class="example-full-width">
-					<textarea matInput placeholder="Leave a comment"></textarea>
-				</mat-form-field>
-			</form> -->
-			
-
-			
+			<div class="form-group">
+				<label for="customer-email">Mail</label>
+				<input type="email" id="customer-email" class="form-control" ngModel name="customer-email" required email #custEmail="ngModel">
+				<span class="help-desk" *ngIf="!custEmail.valid && custEmail.touched">Please enter valid email!</span>
+			</div>
 		</div>
 		<img src="https://i.gifer.com/ZSj6.gif" alt="handShake GIF">
 		<div class="container-vendor">
-			
+			<div class="vend-header">
+				<p>Vendor</p>
+			</div>
+			<div class="form-group">
+				<label for="vendor-name">Name</label>
+				<input type="text" id="vendor-name" class="form-control" ngModel name="vendor-name" required>
+			</div>
+			<div class="form-group">
+				<label for="vendor-phone"> Phone </label>
+				<input type="tel" id="vendor-phone" class="form-control" ngModel name="vendor-phone" required>
+			</div>
+			<div class="form-group">
+				<label for="vendor-email">Mail</label>
+				<input type="email" id="vendor-email" class="form-control" ngModel name="vendor-email" required email #vendEmail="ngModel">
+				<span class="help-desk" *ngIf="!vendEmail.valid && vendEmail.touched">Please enter valid email!</span>
+			</div>
 		</div>
-	
-		<button class="btn btn-primary" type="button" (click)="clickedSubmit=true">Submit</button>
-	</Form>
+		<button class="btn btn-primary" [disabled]="!f.valid" type="submit">Submit</button>
+	</form>
 	
 </div>
 

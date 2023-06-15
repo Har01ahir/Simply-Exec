@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { HttpClient } from '@angular/common/http'
+import { FormBuilder, NgForm } from '@angular/forms';
 // import { Form, NgForm } from '@angular/forms';
 
 @Component({
@@ -9,13 +10,21 @@ import { HttpClient } from '@angular/common/http'
 })
 export class CreateContractComponent {
   clickedSubmit = false;
+  answer = '';
+  @ViewChild('f') form!: NgForm;
 
   constructor() {}
 
   onSubmit() {
     this.clickedSubmit=true;
-    // alert("Submitted Here!");
-    // this.http.get('http://localhost:4200/contract/create-contract');
+    console.log(this.form);
+  }
+
+  check() {
+    if (this.form.valid){
+      return true;
+    }
+    return false;
   }
 
 }
