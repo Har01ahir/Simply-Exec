@@ -106,7 +106,7 @@ img {
     border: .25px solid rgb(128, 199, 239);
 }
 
-.container-xs {
+.content {
     background-color: white;
     width: 500px;
     height: 130px;
@@ -117,7 +117,7 @@ img {
     left: 500px;
 }
 
-.container-xs .btn {
+.content .btn {
     width: 80px;
     height: 40px;
     padding-left: 10px;
@@ -143,4 +143,14 @@ img {
 input.ng-invalid.ng-touched {
     border: 1px solid red;
 }
+.blur-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5); /* Adjust the opacity as needed */
+    backdrop-filter: blur(5px); /* Adjust the blur amount as needed */
+  }
+  
   

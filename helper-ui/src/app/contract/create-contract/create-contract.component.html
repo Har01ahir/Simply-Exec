@@ -1,57 +1,71 @@
-<div class="container" *ngIf="!clickedSubmit">
+<!-- <div class="container" *ngIf="!clickedSubmit"> -->
+<div class="container">
 	<button class="btn-back" type="button" routerLink="../">Back</button>
 	<form (ngSubmit)="onSubmit()" #f="ngForm">
-		<div class="container-customer">
-			<div class="cust-header">
-				<p>Customer</p>
+		<div id="user-data" ngModelGroup="userData">
+			<div class="container-customer">
+				<div class="cust-header">
+					<p>Customer</p>
+				</div>
+				<div class="form-group">
+					<label for="customer-name">Name</label>
+					<input type="text" id="customer-name" class="form-control" ngModel name="customer-name" required>
+				</div>
+				
+				<div class="form-group">
+					<label for="customer-phone"> Phone </label>
+					<input type="tel" id="customer-phone" class="form-control" ngModel name="customer-phone" required>
+				</div>
+				<div class="form-group">
+					<label for="customer-email">Mail</label>
+					<input type="email" id="customer-email" class="form-control" ngModel name="customer-email" required email #custEmail="ngModel">
+					<span class="help-desk" *ngIf="!custEmail.valid && custEmail.touched">Please enter valid email!</span>
+				</div>
 			</div>
-			<div class="form-group">
-				<label for="customer-name">Name</label>
-				<input type="text" id="customer-name" class="form-control" [(ngModel)]="answer" name="customer-name" required>
+			<img src="https://i.gifer.com/ZSj6.gif" alt="handShake GIF">
+			<div class="container-vendor">
+				<div class="vend-header">
+					<p>Vendor</p>
+				</div>
+				<div class="form-group">
+					<label for="vendor-name">Name</label>
+					<input type="text" id="vendor-name" class="form-control" ngModel name="vendor-name" required>
+				</div>
+				<div class="form-group">
+					<label for="vendor-phone"> Phone </label>
+					<input type="tel" id="vendor-phone" class="form-control" ngModel name="vendor-phone" required>
+				</div>
+				<div class="form-group">
+					<label for="vendor-email">Mail</label>
+					<input type="email" id="vendor-email" class="form-control" ngModel name="vendor-email" required email #vendEmail="ngModel">
+					<span class="help-desk" *ngIf="!vendEmail.valid && vendEmail.touched">Please enter valid email!</span>
+					<!-- <p *ngIf="!userData.valid && userData.touched">User Data is invalid!</p> -->
+				</div>
 			</div>
-			
-			<div class="form-group">
-				<label for="customer-phone"> Phone </label>
-				<input type="tel" id="customer-phone" class="form-control" ngModel name="customer-phone" required>
-			</div>
-			<div class="form-group">
-				<label for="customer-email">Mail</label>
-				<input type="email" id="customer-email" class="form-control" ngModel name="customer-email" required email #custEmail="ngModel">
-				<span class="help-desk" *ngIf="!custEmail.valid && custEmail.touched">Please enter valid email!</span>
-			</div>
+			<button class="btn btn-primary" [disabled]="!f.valid" type="submit">Submit</button>
 		</div>
-		<img src="https://i.gifer.com/ZSj6.gif" alt="handShake GIF">
-		<div class="container-vendor">
-			<div class="vend-header">
-				<p>Vendor</p>
-			</div>
-			<div class="form-group">
-				<label for="vendor-name">Name</label>
-				<input type="text" id="vendor-name" class="form-control" ngModel name="vendor-name" required>
-			</div>
-			<div class="form-group">
-				<label for="vendor-phone"> Phone </label>
-				<input type="tel" id="vendor-phone" class="form-control" ngModel name="vendor-phone" required>
-			</div>
-			<div class="form-group">
-				<label for="vendor-email">Mail</label>
-				<input type="email" id="vendor-email" class="form-control" ngModel name="vendor-email" required email #vendEmail="ngModel">
-				<span class="help-desk" *ngIf="!vendEmail.valid && vendEmail.touched">Please enter valid email!</span>
-			</div>
-		</div>
-		<button class="btn btn-primary" [disabled]="!f.valid" type="submit">Submit</button>
 	</form>
 	
 </div>
 
-<div class="container-xs" *ngIf="clickedSubmit">
+<!-- <div class="content" >
 	<p style="color: green; font-size: larger;">Contract has been created Succesully!</p>
 	
-	<!-- <button class="btn btn-primary">Cancel</button> -->
+	<button class="btn btn-primary">Cancel</button>
 	
 	<button class="btn btn-primary" [routerLink]="['/contract/view-contracts']">Ok</button>
 	
-</div>
+</div> -->
+
+<!-- Your component template -->
+<div [class.blur-background]="clickedSubmit">
+	<div class="content" >
+		<p style="color: green; font-size: larger;">Contract has been created Succesully!</p>
+		
+		<button class="btn btn-primary" [routerLink]="['/contract/view-contracts']">Ok</button>
+		
+	</div>
+</div> 
 
 
 
