@@ -42,6 +42,7 @@
 
 .form-group {
     margin-bottom: 20px;
+    color: rgb(0 136 255);
 }
 
 .form-group input{
@@ -128,7 +129,7 @@ img {
     border: 0.0rem;
     width: 120px;
     height: 40px;
-    color: blue;
+    color: rgb(0 136 255);
     padding-left: 10px;
     position: relative;
     top: 75px;
