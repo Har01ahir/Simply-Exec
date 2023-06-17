@@ -1,10 +1,10 @@
 import { BaseEntity, Column, Entity, ManyToOne, PrimaryGeneratedColumn, OneToMany } from 'typeorm';
 import { Customer } from '../customer/customer.entity';
-import { ContractStatus } from './contract-status.enum';
-import { PaymentStatus } from './payment-status.enum';
-import { VendorDeliveryStatus } from './vendor-delivery-status.enum';
+import { PaymentStatus } from './enum/payment-status.enum';
+import { VendorDeliveryStatus } from './enum/vendor-delivery-status.enum';
 import { Vendor } from 'src/vendor/vendor.entity';
 import { Payment } from 'src/payment/payment.entity';
+import { ContractStatus } from './enum/contract-status.enum';
 
 @Entity()
 export class Contract extends BaseEntity {
@@ -16,22 +16,22 @@ export class Contract extends BaseEntity {
   	customer: Customer;
 
 	@Column()
-	customer_id: number;
+	customerId: number;
 
 	@ManyToOne(()=>Vendor, vendor => vendor.contracts)
 	vendor: Vendor;
 
 	@Column()
-	vendor_id: number;
+	vendorId: number;
 
 	@Column()
-	status: ContractStatus;
+	status: ContractStatus = ContractStatus.INITIAL;
 
 	@Column()
-	customer_payment_status: PaymentStatus;
+	customer_payment_status: PaymentStatus = PaymentStatus.PENDING;
 
 	@Column()
-	vendor_delivery_status: VendorDeliveryStatus;
+	vendor_delivery_status: VendorDeliveryStatus = VendorDeliveryStatus.INITIAL;
 
 	@OneToMany(() => Payment, payment => payment.contract)
 	payments: Payment[];

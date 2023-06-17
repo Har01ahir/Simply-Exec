@@ -3,6 +3,7 @@ import { TypeOrmModule, getDataSourceToken, getRepositoryToken } from '@nestjs/t
 import { Customer } from './customer.entity';
 import { DataSource } from 'typeorm';
 import { customerRepository } from './customer.repository';
+import { CustomerService } from './customer.service';
 
 @Module({
     imports:[
@@ -16,7 +17,9 @@ import { customerRepository } from './customer.repository';
             useFactory(dataSource: DataSource) {
                 return dataSource.getRepository(Customer).extend(customerRepository);
             }
-        }
-    ]
+        },
+        CustomerService,
+    ],
+    exports: [CustomerService]
 })
 export class CustomerModule {}

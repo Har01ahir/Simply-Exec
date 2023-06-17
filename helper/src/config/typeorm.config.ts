@@ -12,5 +12,5 @@ export const typeOrmConfig: TypeOrmModuleOptions = {
     password: 'postgres',
     database: 'contract-platform',
     entities: [Customer, Payment, Contract, Vendor],
-    synchronize: false,
+    synchronize: true,
 }

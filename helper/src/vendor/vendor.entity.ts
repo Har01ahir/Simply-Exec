@@ -11,7 +11,7 @@ export class Vendor extends BaseEntity {
     name: string;
 
     @Column()
-    mobile: number;
+    phone: string;
 
     @Column()
     email: string;
