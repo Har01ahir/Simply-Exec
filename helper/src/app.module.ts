@@ -15,7 +15,7 @@ import { ContractController } from './contract/contract.controller';
     VendorModule,
     TypeOrmModule.forRoot(typeOrmConfig),
     ContractModule,
-    PaymentModule
+    PaymentModule,
   ],
   controllers: [AppController],
   providers: [AppService],
