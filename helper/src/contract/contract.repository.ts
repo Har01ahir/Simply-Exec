@@ -25,18 +25,12 @@ export const contractRepository: Pick<ContractRepository, any> = {
 
         await contract.save();
 
-        return contract;
+        return this.getContractById(contract.id);
         
     },
 
     async getContracts(): Promise<Contract[]> {
-        // const query = this.createQueryBuilder('contract');
-
-        // const contracts = await query.getMany();
-
-        // return contracts
         const contracts = await this.createQueryBuilder('contract').getMany();
-        console.log(contracts);
         return contracts;
     },
 
@@ -47,10 +41,7 @@ export const contractRepository: Pick<ContractRepository, any> = {
 
         if (!contract) {
             throw new NotFoundException(`Contract with Id: ${id} Not Found`);
-        }        
-        //     await this.findAndCount({
-        //     where: { id }
-        // }));
+        }  
         return contract;
     },
 

@@ -1,4 +1,4 @@
-import { BaseEntity, Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
+import { BaseEntity, Column, CreateDateColumn, Entity, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
 import { Contract } from 'src/contract/contract.entity';
 
 @Entity()
@@ -19,5 +19,10 @@ export class Customer extends BaseEntity {
     @OneToMany(()=>Contract, contract => contract.customer)
     contracts: Contract[];
 
+    @CreateDateColumn({ type: 'timestamp' })
+    created_at: Date;
+
+    @UpdateDateColumn({ type: 'timestamp' })
+    updated_at: Date;
 
 }

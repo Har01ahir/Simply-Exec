@@ -1,6 +1,6 @@
 import { Contract } from 'src/contract/contract.entity';
-import { PaymentStatus } from 'src/contract/enum/payment-status.enum';
-import { BaseEntity, Entity, PrimaryGeneratedColumn, ManyToOne, Column } from 'typeorm';
+import { CustomerPaymentStatus } from 'src/contract/enum/payment-status.enum';
+import { BaseEntity, Entity, PrimaryGeneratedColumn, ManyToOne, Column, CreateDateColumn } from 'typeorm';
 
 @Entity()
 export class Payment extends BaseEntity {
@@ -15,5 +15,8 @@ export class Payment extends BaseEntity {
 	amount: number;
 
 	@Column()
-	status: PaymentStatus;
+	status: CustomerPaymentStatus;
+
+	@CreateDateColumn({ type: 'timestamp' })
+  	created_at: Date;
 }

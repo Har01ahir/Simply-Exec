@@ -7,7 +7,6 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { typeOrmConfig } from './config/typeorm.config';
 import { ContractModule } from './contract/contract.module';
 import { PaymentModule } from './payment/payment.module';
-import { ContractController } from './contract/contract.controller';
 
 @Module({
   imports: [
