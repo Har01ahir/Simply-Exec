@@ -1,3 +1,29 @@
-<p> user with id {{ user.id }} and name {{ user.name }} is working on hp Omen</p>
-
-<button [routerLink]="['/contract','view-contracts','3','Jayesh']">Load Jayesh</button>
+<div class="container">
+    <table #myTable class="table table-bordered table-striped table-hover" datatable [dtOptions]="dtOptions" >
+        <thead>
+            <tr>
+                <th>contractId</th>
+                <th>customerId</th>
+                <th>vendorId</th>
+                <th>customer_payment_status</th>
+                <th>vendor_delivery_status</th>
+                <th>status</th>
+                <th>created_at</th>
+                <th>updated_at</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let contract of contracts">
+                <td>{{ contract.id }}</td>
+                <td>{{ contract.customerId }}</td>
+                <td>{{ contract.vendorId }}</td>
+                <td>{{ contract.status }}</td>
+                <td>{{ contract.customer_payment_status }}</td>
+                <td>{{ contract.vendor_delivery_status }}</td>
+                <td>{{ contract.created_at }}</td>
+                <td>{{ contract.updated_at }}</td>
+            </tr>
+        </tbody>
+        
+    </table>
+</div>
