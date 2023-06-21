@@ -8,6 +8,7 @@ import { Injectable } from "@nestjs/common";
 export interface CustomerRepository extends Repository<Customer> {
     this: Repository<Customer>
     createCustomer(userDto: UserDTO): Promise<Customer>;
+    getAllCustomers(): Promise<Customer[]>;
 }
 
 
@@ -23,5 +24,10 @@ export const customerRepository: Pick<CustomerRepository, any> = {
         await customer.save();
                 
         return customer;
+    },
+
+    async getAllCustomers(): Promise<Customer[]> {
+        const customers = await this.createQueryBuilder('customer').getMany();
+        return customers;
     }
 }

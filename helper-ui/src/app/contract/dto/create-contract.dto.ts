@@ -1,8 +1,8 @@
 import { UserDTO } from "./user.dto";
 
-export class CreateContractDto {
+export interface CreateContractDto {
 
-    customer!: UserDTO;
+    customer: UserDTO;
 
-    vendor!: UserDTO;
+    vendor: UserDTO;
 }

@@ -15,5 +15,9 @@ export class CustomerService {
         return this.customerRepository.createCustomer(userDTO);
     }
 
+    async getAllCustomers(): Promise<Customer[]> {
+        return await this.customerRepository.getAllCustomers();
+    }
+
 
 }

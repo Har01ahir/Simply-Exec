@@ -11,14 +11,14 @@ import { CreateContractComponent } from './contract/create-contract/create-contr
 import { ViewContractsComponent } from './contract/view-contracts/view-contracts.component';
 import { HttpClientModule } from '@angular/common/http';
 import { DataTablesModule } from 'angular-datatables';
-import { DataTableComponent } from './contract/data-table/data-table.component';
+import { ContractTableComponent } from './contract/contract-table/contract-table.component';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { Contract } from './contract/contract.model';
-import { DataTableDataSource } from './contract/data-table/data-table-datasource';
-import { TimestampPipe } from './contract/data-table/date.pipe';
+import { TimestampPipe } from './contract/contract-table/date.pipe';
+import { CustomerTableComponent } from './customer-table/customer-table.component';
 
 // import { MatButtonModule, MatFormFieldModule, MatInputModule, MatRippleModule } from '@angular/material';
 
@@ -33,8 +33,9 @@ import { TimestampPipe } from './contract/data-table/date.pipe';
     ContractComponent,
     CreateContractComponent,
     ViewContractsComponent,
-    DataTableComponent,
+    ContractTableComponent,
     TimestampPipe,
+    CustomerTableComponent,
   ],
   imports: [
     BrowserModule,

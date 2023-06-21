@@ -16,7 +16,7 @@ import { Contract } from '../contract.model';
  * encapsulate all logic for fetching and manipulating the displayed data
  * (including sorting, pagination, and filtering).
  */
-export class DataTableDataSource extends DataSource<Contract> {
+export class ContractTableDataSource extends DataSource<Contract> {
   data: Contract[] = [];
   paginator: MatPaginator | undefined;
   sort: MatSort | undefined;
