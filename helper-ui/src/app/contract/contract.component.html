@@ -1,0 +1,23 @@
+<div class="container-xl">
+	<div class="row justify-content-evenly" >
+		<div class="col-sm-4">
+			<button class="btn btn-primary" [routerLink]="['create-contract']" type="button">Create Contract</button>
+		</div>
+		<div class="col-sm-4">
+			<button class="btn btn-primary" (click)="OnViewContract()" type="button">View Contracts</button>
+        </div>
+        
+	</div>
+    
+</div>
+
+<!-- <div class="container" *ngIf="createButton">
+	<div class="row">
+		<div class="col-xl-6">
+			<p>Customer</p>
+		</div>
+		<div class="col-xl-6" *ngIf="createButton">
+			<p>Vendor</p>
+		</div>	
+	</div>
+</div> -->

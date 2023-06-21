@@ -1,0 +1,69 @@
+<!-- <div class="container" *ngIf="!clickedSubmit"> -->
+<div class="container">
+	<button class="btn-back" type="button" routerLink="../">Back</button>
+	<form [formGroup]="form" (ngSubmit)="onSubmit()">
+		
+		<!-- Customer Group -->
+		<div formGroupName="customer" class="container-customer">
+			<div class="cust-header">
+				<p>Customer</p>
+			</div>
+			<div class="form-group">
+				<label for="name">Name</label>
+				<input type="text" id="name" class="form-control" formControlName="name" name="customer_name">
+			</div>
+
+			<div class="form-group">
+				<label for="phone"> Phone </label>
+				<input type="tel" id="phone" class="form-control" formControlName="phone" name="phone">
+			</div>
+			<div class="form-group">
+				<label for="email">Mail</label>
+				<input type="email" id="email" class="form-control" formControlName="email" name="email">
+				<span class="help-desk" *ngIf="!form.get('customer.email').valid && form.get('customer.email').touched">Please enter valid Email</span>
+			</div>
+		</div>
+
+		<!-- GIF -->
+		<img src="https://i.gifer.com/ZSj6.gif" alt="handShake GIF">
+
+		<!-- Vendor Group -->
+		<div formGroupName="vendor"  class="container-vendor">
+			<div class="vend-header">
+				<p>Vendor</p>
+			</div>
+			<div class="form-group">
+				<label for="name">Name</label>
+				<input type="text" id="name" class="form-control" formControlName="name" name="name">
+			</div>
+			<div class="form-group">
+				<label for="phone"> Phone </label>
+				<input type="tel" id="phone" class="form-control" formControlName="phone" name="phone">
+			</div>
+			<div class="form-group">
+				<label for="email">Mail</label>
+				<input type="email" id="email" class="form-control" formControlName="email" name="email" #vendEmail>
+				<span class="help-desk" *ngIf="!form.get('vendor.email').valid && form.get('vendor.email').touched">Please enter valid email!</span>
+			</div>
+		</div>
+
+		<button class="btn btn-primary" [disabled]="!form.valid" type="submit">Submit</button>
+
+	</form>
+	
+</div>
+
+<div [class.blur-background]="clickedSubmit">
+	<div class="content" >
+		<p style="color: green; font-size: larger;">Contract has been created Succesully!</p>
+		
+		<button class="btn btn-primary" [routerLink]="['/contract/view-contracts']">Ok</button>
+		
+	</div>
+</div> 
+
+
+
+
+
+

@@ -1,0 +1,38 @@
+.full-width-table {
+  width: 80%;
+  margin: 20px auto;
+  background-color: white;
+}
+.mat-elevation-z8 {
+  border-radius: .25rem;
+  position: relative;
+  margin-bottom: auto;
+}
+
+.change-button {
+  border-radius: 3.25px;
+  width: 70px;
+  height: 23px;
+  /* margin: auto; */
+  border: 0px solid #474646;
+  background-color: #e0dede;
+  box-decoration-break: none;
+}
+.btn-back {
+  /* border-radius: 0.25rem; */
+  border: 0.0rem;
+  width: 120px;
+  height: 40px;
+  color: rgb(0 136 255);
+  padding-left: 10px;
+  position: relative;
+  top: 15px;
+  right: 695px;
+}
+.btn-back:hover {
+  border: 1px solid rgb(92, 92, 236);
+}
+.btn-back:focus {
+  border: blue;
+}
+
