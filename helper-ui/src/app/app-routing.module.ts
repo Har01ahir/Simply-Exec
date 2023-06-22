@@ -5,13 +5,15 @@ import { ContractComponent } from './contract/contract.component';
 import { CreateContractComponent } from './contract/create-contract/create-contract.component';
 import { ViewContractsComponent } from './contract/view-contracts/view-contracts.component';
 import { CustomerTableComponent } from './customer-table/customer-table.component';
+import { VendorTableComponent } from './vendor-table/vendor-table.component';
 
 const appRoutes: Routes = [
   { path: '', component: WelcomeComponent },
   { path: 'contract', component: ContractComponent },
   { path: 'contract/create-contract', component: CreateContractComponent},
   { path: 'contract/view-contracts', component: ViewContractsComponent},
-  { path: 'customer', component: CustomerTableComponent}
+  { path: 'customer', component: CustomerTableComponent},
+  { path: 'vendor', component: VendorTableComponent},
 ]
 
 @NgModule({ 

@@ -19,7 +19,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { Contract } from './contract/contract.model';
 import { TimestampPipe } from './contract/contract-table/date.pipe';
 import { CustomerTableComponent } from './customer-table/customer-table.component';
-
+import { VendorTableComponent } from './vendor-table/vendor-table.component';
 // import { MatButtonModule, MatFormFieldModule, MatInputModule, MatRippleModule } from '@angular/material';
 
 
@@ -36,6 +36,7 @@ import { CustomerTableComponent } from './customer-table/customer-table.componen
     ContractTableComponent,
     TimestampPipe,
     CustomerTableComponent,
+    VendorTableComponent
   ],
   imports: [
     BrowserModule,

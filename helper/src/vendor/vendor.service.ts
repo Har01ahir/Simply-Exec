@@ -13,5 +13,9 @@ export class VendorService {
 
     createVendor(userDTO: UserDTO): Promise<Vendor> {
         return this.vendorRepository.createVendor(userDTO);
+    } 
+
+    getAllVendors(): Promise<Vendor> {
+        return this.vendorRepository.getAllVendors();
     }
 }
