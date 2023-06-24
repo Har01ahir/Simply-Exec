@@ -4,7 +4,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { ContractTableDataSource } from './contract-table-datasource';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, map } from 'rxjs';
 import { Contract } from '../contract.model';
 
 @Component({
@@ -12,12 +12,13 @@ import { Contract } from '../contract.model';
   templateUrl: './contract-table.component.html',
   styleUrls: ['./contract-table.component.css']
 })
-export class ContractTableComponent implements AfterViewInit, OnInit {
+export class ContractTableComponent implements AfterViewInit, OnInit, AfterViewInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
-  @ViewChild(MatSort, { static: true}) sort!: MatSort;
+  @ViewChild(MatSort) sort!: MatSort;
   @ViewChild(MatTable) table!: MatTable<Contract>;
   @Input('contracts') contracts!: Observable<Contract[]>; 
-  dataSource!: ContractTableDataSource;;
+  dataSource!: ContractTableDataSource;
+  length = 0;
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
   displayedColumns = ['id', 'customerId','vendorId','customer_payment_status','vendor_delivery_status','status','created_at','updated_at'];
@@ -29,9 +30,12 @@ export class ContractTableComponent implements AfterViewInit, OnInit {
   }
 
   ngOnInit() {
-    this.contracts.subscribe(res => {
+    this.http.
+      get<Contract[]>('http://localhost:3000/contract/view-contracts').subscribe(res => {
+
       this.dataSource = new ContractTableDataSource(res);
-      console.log(this.dataSource);
+      this.length = this.dataSource.data.length;
+
     });
 
   }

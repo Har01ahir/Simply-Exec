@@ -21,7 +21,7 @@ import { TimestampPipe } from './contract/contract-table/date.pipe';
 import { CustomerTableComponent } from './customer-table/customer-table.component';
 import { VendorTableComponent } from './vendor-table/vendor-table.component';
 // import { MatButtonModule, MatFormFieldModule, MatInputModule, MatRippleModule } from '@angular/material';
-
+import { MatIconModule } from '@angular/material/icon';
 
 
 @NgModule({
@@ -48,8 +48,8 @@ import { VendorTableComponent } from './vendor-table/vendor-table.component';
     MatTableModule,
     MatPaginatorModule,
     MatSortModule,
-    BrowserAnimationsModule
-
+    BrowserAnimationsModule,
+    MatIconModule
   ],
   providers: [],
   bootstrap: [AppComponent]

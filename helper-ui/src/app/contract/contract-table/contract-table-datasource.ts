@@ -18,8 +18,9 @@ import { Contract } from '../contract.model';
  */
 export class ContractTableDataSource extends DataSource<Contract> {
   data: Contract[] = [];
-  paginator: MatPaginator | undefined;
-  sort: MatSort | undefined;
+  length = this.data.length;
+  paginator!: MatPaginator;
+  sort!: MatSort;
 
   constructor(data: Contract[]) {
     super();

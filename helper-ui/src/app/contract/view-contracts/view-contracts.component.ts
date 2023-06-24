@@ -27,7 +27,7 @@ export class ViewContractsComponent implements OnInit, OnDestroy {
   ngOnInit() {
 
     // const that = this
-    this.fetchContracts();
+    // this.fetchContracts();
 
     // $('#myTable').append();
 

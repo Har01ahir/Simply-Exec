@@ -12,8 +12,4 @@ export interface Contract {
     status: ContractStatus;
     created_at: Date;
     updated_at: Date;
-
-    
-    
-
   }

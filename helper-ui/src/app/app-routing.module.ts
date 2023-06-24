@@ -6,12 +6,13 @@ import { CreateContractComponent } from './contract/create-contract/create-contr
 import { ViewContractsComponent } from './contract/view-contracts/view-contracts.component';
 import { CustomerTableComponent } from './customer-table/customer-table.component';
 import { VendorTableComponent } from './vendor-table/vendor-table.component';
+import { ContractTableComponent } from './contract/contract-table/contract-table.component';
 
 const appRoutes: Routes = [
   { path: '', component: WelcomeComponent },
   { path: 'contract', component: ContractComponent },
   { path: 'contract/create-contract', component: CreateContractComponent},
-  { path: 'contract/view-contracts', component: ViewContractsComponent},
+  { path: 'contract/view-contracts', component: ContractTableComponent},
   { path: 'customer', component: CustomerTableComponent},
   { path: 'vendor', component: VendorTableComponent},
 ]

@@ -22,3 +22,21 @@
 .container-xl .btn:hover {
     border: 0.25px solid white;
 }
+
+.btn-back {
+    border-radius: 0.25rem;
+    border: 0.0rem;
+    width: 120px;
+    height: 40px;
+    color: rgb(0 136 255);
+    padding-left: 10px;
+    position: relative;
+    top: 245px;
+    right: 240px;
+}
+.btn-back:hover {
+    border: 1px solid rgb(92, 92, 236);
+}
+.btn-back:focus {
+    border: blue;
+}
