@@ -12,10 +12,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class CreateContractComponent implements OnInit {
   clickedSubmit = false;
   form: any;
-<<<<<<< HEAD
-=======
   error = null;
->>>>>>> dev
   // @ViewChild('userData') userData!: NgForm;
   // user = {
   //   customer_name: '',
@@ -27,16 +24,6 @@ export class CreateContractComponent implements OnInit {
   // }
   
 
-<<<<<<< HEAD
-  constructor(private http: HttpClient,private router: Router, private activeRoute: ActivatedRoute) {}
-
-  async onSubmit() {
-    // console.log(this.form);
-    await this.http.post('http://localhost:3000/contract/create', this.form.value).subscribe((response) => {
-      console.log(response);
-    })
-    await setTimeout(()=> this.clickedSubmit = true, 1000);
-=======
   constructor(
     private router: Router, 
     private activeRoute: ActivatedRoute,
@@ -50,7 +37,6 @@ export class CreateContractComponent implements OnInit {
       setTimeout(()=> this.clickedSubmit = true, 1000)
     })
     
->>>>>>> dev
     
   }
 

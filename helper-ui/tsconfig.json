@@ -21,13 +21,7 @@
     "useDefineForClassFields": false,
     "lib": [
       "ES2022",
-      "dom"
-<<<<<<< HEAD
-    ],
-    "types": ["datatables.net"]
-=======
-    ]
->>>>>>> dev
+      "dom"]
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,
