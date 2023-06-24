@@ -4,20 +4,13 @@ import { Vendor } from './vendor.entity';
 import { DataSource } from 'typeorm';
 import { vendorRepository } from './vendor.repository';
 import { VendorService } from './vendor.service';
-<<<<<<< HEAD
-=======
 import { VendorController } from './vendor.controller';
->>>>>>> dev
 
 @Module({
 	imports:[
 		TypeOrmModule.forFeature([Vendor]),
 	],
-<<<<<<< HEAD
-	controllers:[],
-=======
 	controllers:[VendorController],
->>>>>>> dev
 	providers: [
 		{
 			provide: getRepositoryToken(Vendor),
