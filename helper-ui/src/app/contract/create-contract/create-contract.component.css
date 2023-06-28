@@ -154,4 +154,7 @@ input.ng-invalid.ng-touched {
     backdrop-filter: blur(5px); /* Adjust the blur amount as needed */
   }
   
-  
+.container-md {
+    position: relative;
+    top: 30px;
+}
