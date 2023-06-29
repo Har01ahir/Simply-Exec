@@ -7,6 +7,9 @@ import { CustomerService } from 'src/customer/customer.service';
 import { VendorService } from 'src/vendor/vendor.service';
 import { Customer } from 'src/customer/customer.entity';
 import { Vendor } from 'src/vendor/vendor.entity';
+import { CustomerPaymentStatus } from './enum/payment-status.enum';
+import { VendorDeliveryStatus } from './enum/vendor-delivery-status.enum';
+import { ContractStatus } from './enum/contract-status.enum';
 
 @Injectable()
 export class ContractService {
@@ -60,5 +63,17 @@ export class ContractService {
         }
 
         return customer;
+    }
+
+    async updatePaymentStatus(id: number, status: CustomerPaymentStatus): Promise<Contract> {
+        return this.contractRepository.updatePaymentStatus(id, status);
+    }
+
+    async updateDeliveryStatus(id: number, status: VendorDeliveryStatus): Promise<Contract> {
+        return this.contractRepository.updateDeliveryStatus(id, status);
+    }
+
+    async updateContractStatus(id: number, status: ContractStatus): Promise<Contract> {
+        return this.contractRepository.updateContractStatus(id, status);
     }
 }

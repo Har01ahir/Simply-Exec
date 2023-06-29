@@ -9,9 +9,12 @@ export class AppController {
   getHello(): string {
     return this.appService.getHello();
   }
+<<<<<<< Updated upstream
+=======
 
   @Delete('/:id')
   deleteRecord(@Param('id', ParseIntPipe) id: number) {
-    return "record Deleted Successfully with id : "+id;
+    return {'message':"record Deleted Successfully with id : "+id};
   }
+>>>>>>> Stashed changes
 }
