@@ -1,5 +1,5 @@
 export enum ContractStatus {
-  INITIAL = 'initial',
+	INITIAL = 'initial',
 	LIVE = 'live',
 	DONE = 'done',
 }

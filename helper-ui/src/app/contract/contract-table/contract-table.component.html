@@ -22,20 +22,19 @@
     <!-- CustomerPaymentStatus Column -->
     <ng-container matColumnDef="customer_payment_status">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>CustomerPaymentStatus</th>
-      <td mat-cell *matCellDef="let row"><button class="change-button">{{row.customer_payment_status}}</button></td>
+      <td mat-cell *matCellDef="let row"><button class="change-button" (click)="toChangeStatus(row.id, 'payment')">{{row.customer_payment_status}}</button></td>
     </ng-container>
     
     <!-- VendorDeliveryStatus Column -->
     <ng-container matColumnDef="vendor_delivery_status">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>VendorDeliveryStatus</th>
-      <td mat-cell *matCellDef="let row"><button class="change-button">{{row.vendor_delivery_status}}<span class="caret"></span></button></td>
+      <td mat-cell *matCellDef="let row"><button class="change-button" (click)="toChangeStatus(row.id, 'delivery')">{{row.vendor_delivery_status}}</button></td>
     </ng-container>
 
     <!-- Status Column -->
     <ng-container matColumnDef="status">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>Status</th>
-      <td mat-cell *matCellDef="let row"><button class="change-button">
-        {{row.status}}</button></td>
+      <td mat-cell *matCellDef="let row"><button class="change-button" (click)="toChangeStatus(row.id, 'contract')">{{row.status}}</button></td>
     </ng-container>
 
     <!-- CreatedAt Column -->
@@ -61,4 +60,78 @@
     [pageSizeOptions]="[10]"
     aria-label="Select page">
   </mat-paginator>
+</div>
+
+
+<!-- To change Customer Payment Status -->
+<div [class.blur-background]="changepaymentstatus" *ngIf="changepaymentstatus">
+	<div class="payment-status-form" >
+		<p style="color: green; font-size: larger;">Change Payment status</p>
+	  <!-- <button class="btn btn-primary" [routerLink]="['/contract/view-contracts']">Ok</button> -->
+		<div class="container-sm">
+      <form [formGroup]="paymentStatus" (ngSubmit)="onChangePaymentStatus()">
+        <div class="form-group">
+          <label for="amount">Amount</label>
+          <input type="number" class="form-control" formControlName="amount" id="amount" name="amount">
+
+          <span class="help-desk" *ngIf="!paymentStatus.get('amount').valid && paymentStatus.get('amount').touched">Please enter some amount</span>
+        </div>
+        <div class="form-group">
+          <label for="payment-status">Payment Status</label>
+          <select name="paymentstatus" formControlName="status" class="form-control" id="paymentstatus">
+            <option [value]="customerPaymentStatus.PENDING">pending</option>
+            <option [value]="customerPaymentStatus.DONE">done</option>
+          </select>
+          <span class="help-desk" *ngIf="!paymentStatus.get('status').valid && paymentStatus.get('status').touched">Please select delivery status</span>
+        </div>
+
+        <button class="btn btn-primary" (click)="changepaymentstatus=false; paymentStatus.reset()" type="reset">Cancel</button>
+        <button class="btn btn-primary" [disabled]="!paymentStatus.valid" type="submit">Submit</button>
+      </form>
+    </div>
+    
+	</div>
+</div>
+
+
+
+<!-- To Change Vendor Delivery Status  -->
+<div [class.blur-background]="changedeliverystatus" *ngIf="changedeliverystatus">
+  <div class="delivery-status-change" >
+    <p style="color: green; font-size: larger; margin: 10px;">Change Delivery status</p>
+    <form [formGroup]="deliveryStatus" (ngSubmit)="onChangeDeliveryStatus()">
+      <div class="form-group">
+        <label for="deliveryStatus">Delivery Status</label>
+        <select name="deliveryStatus" formControlName="status" class="form-control" id="deliveryStatus" >
+          <option [value]="vendorDeliveryStatus.INITIAL">initial</option>
+          <option [value]="vendorDeliveryStatus.IN_TRANSIT">in transit</option>
+          <option [value]="vendorDeliveryStatus.DELIVERED">delivered</option>
+        </select>
+        <span class="help-desk" *ngIf="!deliveryStatus.get('status').valid && deliveryStatus.get('status').touched">Please select payment status</span>
+      </div>
+      <button class="btn btn-primary" (click)="changedeliverystatus=false; deliveryStatus.reset()" type="reset">Cancel</button>
+      <button class="btn btn-primary"  type="submit">Submit</button>
+    </form>      
+  </div>
+</div>
+
+
+<!-- To Change Contract Status -->
+<div [class.blur-background]="changecontractstatus" *ngIf="changecontractstatus">
+  <div class="delivery-status-change" >
+    <p style="color: green; font-size: larger; margin: 10px;">Change Contract status</p>
+    <form [formGroup]="setContractStatus" (ngSubmit)="onChangeContractStatus()">
+      <div class="form-group">
+        <label for="deliveryStatus">Contract Status</label>
+        <select name="contractStatus" formControlName="status" class="form-control" id="contractStatus" >
+          <option [value]="contractStatus.INITIAL">initial</option>
+          <option [value]="contractStatus.LIVE">live</option>
+          <option [value]="contractStatus.DONE">done</option>
+        </select>
+        <span class="help-desk" *ngIf="!setContractStatus.get('status').valid && setContractStatus.get('status').touched">Please select contract status</span>
+      </div>
+      <button class="btn btn-primary" (click)="changecontractstatus=false; setContractStatus.reset()" type="reset">Cancel</button>
+      <button class="btn btn-primary"  type="submit">Submit</button>
+    </form>      
+  </div>
 </div>

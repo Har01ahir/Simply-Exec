@@ -53,6 +53,7 @@ export class CreateContractComponent implements OnInit {
         'email': new FormControl(null, [Validators.required, Validators.email])
       }),
     });
+
   }
   
 }

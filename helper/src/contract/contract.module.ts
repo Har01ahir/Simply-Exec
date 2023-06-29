@@ -27,5 +27,8 @@ import { VendorService } from 'src/vendor/vendor.service';
 			},
       ContractService,
     ],
+    exports: [
+      ContractService
+    ]
 })
 export class ContractModule {}
