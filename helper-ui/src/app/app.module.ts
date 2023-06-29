@@ -22,6 +22,7 @@ import { CustomerTableComponent } from './customer-table/customer-table.componen
 import { VendorTableComponent } from './vendor-table/vendor-table.component';
 // import { MatButtonModule, MatFormFieldModule, MatInputModule, MatRippleModule } from '@angular/material';
 import { MatIconModule } from '@angular/material/icon';
+import { CommonModule } from '@angular/common';
 
 
 @NgModule({
@@ -49,7 +50,8 @@ import { MatIconModule } from '@angular/material/icon';
     MatPaginatorModule,
     MatSortModule,
     BrowserAnimationsModule,
-    MatIconModule
+    MatIconModule,
+    CommonModule
   ],
   providers: [],
   bootstrap: [AppComponent]

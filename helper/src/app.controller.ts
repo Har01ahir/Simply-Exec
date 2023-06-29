@@ -1,7 +1,7 @@
-import { Controller, Get } from '@nestjs/common';
+import { Controller, Delete, Get, Param, ParseIntPipe } from '@nestjs/common';
 import { AppService } from './app.service';
 
-@Controller('/contract/create-contract')
+@Controller('')
 export class AppController {
   constructor(private readonly appService: AppService) {}
 
@@ -9,12 +9,9 @@ export class AppController {
   getHello(): string {
     return this.appService.getHello();
   }
-<<<<<<< Updated upstream
-=======
 
   @Delete('/:id')
   deleteRecord(@Param('id', ParseIntPipe) id: number) {
     return {'message':"record Deleted Successfully with id : "+id};
   }
->>>>>>> Stashed changes
 }

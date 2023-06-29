@@ -35,6 +35,9 @@ export class CreateContractComponent implements OnInit {
 
     await this.http.post('http://localhost:3000/contract/create',this.form.value).subscribe( res => {
       setTimeout(()=> this.clickedSubmit = true, 1000)
+    }, (error)=>{
+      this.error = error.message;
+      console.log(error)
     })
     
     
