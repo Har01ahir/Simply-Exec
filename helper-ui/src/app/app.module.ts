@@ -23,6 +23,9 @@ import { VendorTableComponent } from './vendor-table/vendor-table.component';
 // import { MatButtonModule, MatFormFieldModule, MatInputModule, MatRippleModule } from '@angular/material';
 import { MatIconModule } from '@angular/material/icon';
 import { CommonModule } from '@angular/common';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
+import { PaymentTableComponent } from './payment-table/payment-table.component';
 
 
 @NgModule({
@@ -37,7 +40,8 @@ import { CommonModule } from '@angular/common';
     ContractTableComponent,
     TimestampPipe,
     CustomerTableComponent,
-    VendorTableComponent
+    VendorTableComponent,
+    PaymentTableComponent
   ],
   imports: [
     BrowserModule,
@@ -47,6 +51,8 @@ import { CommonModule } from '@angular/common';
     HttpClientModule,
     DataTablesModule,
     MatTableModule,
+    MatInputModule,
+    MatButtonModule,
     MatPaginatorModule,
     MatSortModule,
     BrowserAnimationsModule,

@@ -36,7 +36,7 @@ export class ContractTableComponent implements AfterViewInit, OnInit, AfterViewI
   contractStatus = ContractStatus;
   
   curr_Contract_id!: number;
-  
+  searchText!: string;
   // contracts!: Observable<Contract[]>;
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
@@ -121,7 +121,7 @@ export class ContractTableComponent implements AfterViewInit, OnInit, AfterViewI
       console.log(this.setContractStatus.value);
     }
     
-    // console.log(this.deliveryStatus);
+    
     this.changecontractstatus = false
   }
 
@@ -137,5 +137,10 @@ export class ContractTableComponent implements AfterViewInit, OnInit, AfterViewI
     }
 
     this.curr_Contract_id = id;
+  }
+
+
+  performSearch() {
+    // this.dataSource.filter = this.searchText.trim().toLowerCase();
   }
 }

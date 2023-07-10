@@ -3,28 +3,20 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { map } from 'rxjs/operators';
 import { Observable, of as observableOf, merge } from 'rxjs';
-import { Contract } from '../contract.model';
+import { Payment } from './payment.model';
 
-// TODO: Replace this with your own data model type
-
-
-// TODO: replace this with real data from your application
-// const EXAMPLE_DATA: Contract[] = [];
 
 /**
- * Data source for the DataTable view. This class should
+ * Data source for the PaymentTable view. This class should
  * encapsulate all logic for fetching and manipulating the displayed data
  * (including sorting, pagination, and filtering).
  */
-export class ContractTableDataSource extends DataSource<Contract> {
-  data: Contract[] = [];
-  length = this.data.length;
+export class PaymentTableDataSource extends DataSource<Payment> {
   paginator!: MatPaginator;
   sort!: MatSort;
 
-  constructor(data: Contract[]) {
+  constructor(public data: Payment[]) {
     super();
-    this.data = data;
   }
 
   /**
@@ -32,7 +24,7 @@ export class ContractTableDataSource extends DataSource<Contract> {
    * the returned stream emits new items.
    * @returns A stream of the items to be rendered.
    */
-  connect(): Observable<Contract[]> {
+  connect(): Observable<Payment[]> {
     if (this.paginator && this.sort) {
       // Combine everything that affects the rendered data into one update
       // stream for the data-table to consume.
@@ -55,7 +47,7 @@ export class ContractTableDataSource extends DataSource<Contract> {
    * Paginate the data (client-side). If you're using server-side pagination,
    * this would be replaced by requesting the appropriate data from the server.
    */
-  private getPagedData(data: Contract[]): Contract[] {
+  private getPagedData(data: Payment[]): Payment[] {
     if (this.paginator) {
       const startIndex = this.paginator.pageIndex * this.paginator.pageSize;
       return data.splice(startIndex, this.paginator.pageSize);
@@ -68,28 +60,23 @@ export class ContractTableDataSource extends DataSource<Contract> {
    * Sort the data (client-side). If you're using server-side sorting,
    * this would be replaced by requesting the appropriate data from the server.
    */
-  private getSortedData(data: Contract[]): Contract[] {
+  private getSortedData(data: Payment[]): Payment[] {
     if (!this.sort || !this.sort.active || this.sort.direction === '') {
       return data;
     }
-    
-    // 'created_at','updated_at'
+
     return data.sort((a, b) => {
       const isAsc = this.sort?.direction === 'asc';
       switch (this.sort?.active) {
-        case 'id': return compare(+a.id, +b.id, isAsc);
-        case 'customerId': return compare(+a.customerId, +b.customerId, isAsc);
-        case 'vendorId': return compare(+a.vendorId, +b.vendorId, isAsc);
-        case 'customer_payment_status': return compare(a.customer_payment_status, b.customer_payment_status, isAsc);
-        case 'vendor_delivery_status': return compare(a.vendor_delivery_status, b.vendor_delivery_status, isAsc);
-        case 'status': return compare(a.status, b.status, isAsc);
         case 'created_at': return compareTimestamp(a.created_at, b.created_at, isAsc);
-        case 'updated_at': return compareTimestamp(a.updated_at, b.updated_at, isAsc);
+        case 'status': return compare(+a.status, +b.status, isAsc);
+        case 'amount': return compare(+a.amount, +b.amount, isAsc);
+        case 'contractId': return compare(+a.contractId, +b.contractId, isAsc);
+        case 'id': return compare(+a.id, +b.id, isAsc);
         default: return 0;
       }
     });
   }
-
 }
 
 /** Simple sort comparator for example ID/Name columns (for client-side sorting). */
@@ -98,5 +85,5 @@ function compare(a: string | number, b: string | number, isAsc: boolean): number
 }
 
 function compareTimestamp(a:Date, b: Date, isAsk: boolean) {
-  return ( Number(a.getDate) - Number(b.getDate) );
+  return ( Number(b.getDate) - Number(a.getDate) );
 }
