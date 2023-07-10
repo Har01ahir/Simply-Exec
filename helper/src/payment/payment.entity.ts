@@ -12,6 +12,9 @@ export class Payment extends BaseEntity {
 	@ManyToOne(() => Contract, contract => contract.payments)
 	contract: Contract;
 
+	@Column()
+	contractId: number;
+
 	@Column('float')
 	amount: number;
 

@@ -23,4 +23,8 @@ export class PaymentService {
 
         return payment
     }
+
+    async getAllPayments(): Promise<Payment[]> {
+        return this.paymentRepository.getAllPayment()
+    }
 }
