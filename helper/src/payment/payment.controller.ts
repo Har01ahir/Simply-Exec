@@ -1,4 +1,4 @@
-import { Body, Controller, Param, ParseIntPipe, Post } from '@nestjs/common';
+import { Body, Controller, Param, Get, ParseIntPipe, Post } from '@nestjs/common';
 import { AddPaymentDto } from 'src/contract/dto/add-payment.dto';
 import { PaymentService } from './payment.service';
 import { Payment } from './payment.entity';
@@ -19,5 +19,10 @@ export class PaymentController {
      ): Promise<Payment>  {
 
         return this.paymentService.addNewPayment(id, addPaymentDto);
+    }
+
+    @Get('/')
+    getAllPayments(): Promise<Payment[]> {
+        return this.paymentService.getAllPayments()
     }
 }

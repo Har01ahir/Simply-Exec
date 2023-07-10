@@ -2,6 +2,11 @@
   width: 80%;
   margin: 20px auto;
 }
+.mat-elevation-z8 {
+  width: 80%;
+  margin: 20px auto;
+}
+
 
 .btn-back {
   /* border-radius: 0.25rem; */
@@ -12,7 +17,7 @@
   padding-left: 10px;
   position: relative;
   top: 15px;
-  right: 695px;
+  right: 545px;
 }
 .btn-back:hover {
   border: 1px solid rgb(92, 92, 236);
