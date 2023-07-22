@@ -3,8 +3,8 @@ import { MatTable } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { CustomerTableDataSource } from './customer-table-datasource';
-import { HttpClient } from '@angular/common/http';
 import { Customer } from './customer.model';
+import { AppService } from '../app.service';
 
 @Component({
   selector: 'app-customer-table',
@@ -21,13 +21,15 @@ export class CustomerTableComponent implements AfterViewInit, OnInit {
   displayedColumns = ['id', 'name', 'email', 'phone','created_at','updated_at'];
 
   constructor(
-    private http: HttpClient
+    private appService: AppService
   ) {
     // this.dataSource = new CustomerTableDataSource([]);
   }
 
-  ngOnInit(): void {
-      this.http.get<Customer[]>('http://localhost:3000/customer').subscribe(res => {
+  async ngOnInit() {
+      const getCustomer = await this.appService.getRequest('/customer')
+      
+      getCustomer.subscribe((res: any) => {
         this.dataSource = new CustomerTableDataSource(res);
       });
       

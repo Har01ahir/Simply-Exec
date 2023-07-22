@@ -5,6 +5,7 @@ import { MatSort } from '@angular/material/sort';
 import { VendorTableDataSource } from './vendor-table-datasource';
 import { Vendor } from './vendor.model';
 import { HttpClient } from '@angular/common/http';
+import { AppService } from '../app.service';
 
 @Component({
   selector: 'app-vendor-table',
@@ -21,13 +22,15 @@ export class VendorTableComponent implements AfterViewInit, OnInit {
   displayedColumns = ['id', 'name', 'email', 'phone','created_at','updated_at'];
 
   constructor(
-    private http: HttpClient
+    private appService: AppService
   ) {
     
   }
 
-  ngOnInit() {
-      this.http.get<Vendor[]>('http://localhost:3000/vendor').subscribe(res => {
+  async ngOnInit() {
+      const getVendors = await this.appService.getRequest('/vendor')
+      
+      getVendors.subscribe((res: any) => {
         this.dataSource = new VendorTableDataSource(res);
       })
   }

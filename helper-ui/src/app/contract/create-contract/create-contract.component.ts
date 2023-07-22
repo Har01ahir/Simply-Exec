@@ -1,8 +1,7 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { HttpClient } from '@angular/common/http'
-import { FormBuilder, FormControl, FormGroup, NgForm, NgModelGroup, Validators } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-// import { Form, NgForm } from '@angular/forms';
+import { AppService } from 'src/app/app.service';
 
 @Component({
   selector: 'app-create-contract',
@@ -13,29 +12,21 @@ export class CreateContractComponent implements OnInit {
   clickedSubmit = false;
   form: any;
   error = null;
-  // @ViewChild('userData') userData!: NgForm;
-  // user = {
-  //   customer_name: '',
-  //   customer_phone: '',
-  //   customer_email: '',
-  //   vendor_name: '',
-  //   vendor_phone: '',
-  //   vendor_email: '',
-  // }
   
 
   constructor(
     private router: Router, 
     private activeRoute: ActivatedRoute,
-    private http: HttpClient
+    private appService: AppService
     ) {}
 
   async onSubmit() {
     // console.log(this.form);
-
-    await this.http.post('http://localhost:3000/contract/create',this.form.value).subscribe( res => {
+    const createSubscription = await this.appService.postRequest('/contract/create',this.form.value)
+    
+    createSubscription.subscribe( (_: any) => {
       setTimeout(()=> this.clickedSubmit = true, 1000)
-    }, (error)=>{
+    }, (error: any)=>{
       this.error = error.message;
       console.log(error)
     })

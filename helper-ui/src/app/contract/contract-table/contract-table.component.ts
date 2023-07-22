@@ -4,12 +4,12 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort, Sort } from '@angular/material/sort';
 import { ContractTableDataSource } from './contract-table-datasource';
 import { HttpClient } from '@angular/common/http';
-import { Observable, Subscription, map } from 'rxjs';
 import { Contract } from '../contract.model';
-import { FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { CustomerPaymentStatus } from '../enum/payment-status.enum';
 import { VendorDeliveryStatus } from '../enum/vendor-delivery-status.enum';
 import { ContractStatus } from '../enum/contract-status.enum';
+import { AppService } from 'src/app/app.service';
 
 @Component({
   selector: 'app-contract-table',
@@ -20,7 +20,6 @@ export class ContractTableComponent implements AfterViewInit, OnInit, AfterViewI
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
   @ViewChild(MatTable) table!: MatTable<Contract>;
-  // @Input('contracts') contracts!: Observable<Contract[]>; 
   dataSource!: ContractTableDataSource;
   length = 0;
   changepaymentstatus = false;
@@ -37,13 +36,12 @@ export class ContractTableComponent implements AfterViewInit, OnInit, AfterViewI
   
   curr_Contract_id!: number;
   searchText!: string;
-  // contracts!: Observable<Contract[]>;
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
   displayedColumns = ['id', 'customerId','vendorId','customer_payment_status','vendor_delivery_status','status','created_at','updated_at'];
 
   constructor(
-    private http: HttpClient
+    private appService: AppService
   ) {
     
   }
@@ -67,10 +65,10 @@ export class ContractTableComponent implements AfterViewInit, OnInit, AfterViewI
     })
   }
 
-  fetchContracts() {
-    this.http.
-      get<Contract[]>('http://localhost:3000/contract/view-contracts').subscribe(res => {
-
+  async fetchContracts() {
+    const getContracts = await this.appService.getRequest('/contract/view-contracts')
+    
+    getContracts.subscribe((res: any)=> {
       this.dataSource = new ContractTableDataSource(res);
       this.length = this.dataSource.data.length;
     });
@@ -91,7 +89,9 @@ export class ContractTableComponent implements AfterViewInit, OnInit, AfterViewI
 
     let found = this.dataSource.data.find(obj => obj.id === this.curr_Contract_id)
 
-    await this.http.post('http://localhost:3000/payment/'+this.curr_Contract_id,this.paymentStatus.value).subscribe((res) => {
+    const changePaymentStatusRequest = await this.appService.postRequest('/payment/'+this.curr_Contract_id,this.paymentStatus.value)
+    
+    changePaymentStatusRequest.subscribe((res: any) => {
       window.location.href = '/contract/view-contracts';
     });
     
@@ -101,7 +101,9 @@ export class ContractTableComponent implements AfterViewInit, OnInit, AfterViewI
     let found = this.dataSource.data.find(obj => obj.id === this.curr_Contract_id)
 
     if (found && found.vendor_delivery_status!==this.deliveryStatus.value.status) {
-      await this.http.patch('http://localhost:3000/contract/deliverystatus/'+this.curr_Contract_id,this.deliveryStatus.value).subscribe((res) => {
+      const changeDeliveryStatusRequest = await this.appService.patchRequest('/contract/deliverystatus/'+this.curr_Contract_id,this.deliveryStatus.value)
+      
+      changeDeliveryStatusRequest.subscribe((res: any) => {
         console.log(res);
         window.location.href = '/contract/view-contracts';
       })
@@ -114,7 +116,9 @@ export class ContractTableComponent implements AfterViewInit, OnInit, AfterViewI
     let found = this.dataSource.data.find(obj => obj.id === this.curr_Contract_id)
 
     if (found && found.status!==this.setContractStatus.value.status) {
-      await this.http.patch('http://localhost:3000/contract/status/'+this.curr_Contract_id,this.setContractStatus.value).subscribe((res) => {
+      const changeContractStatusRequest = await this.appService.patchRequest('/contract/status/'+this.curr_Contract_id,this.setContractStatus.value)
+      
+      changeContractStatusRequest.subscribe((res: any) => {
         console.log(res);
         window.location.href = '/contract/view-contracts';
       })
@@ -142,5 +146,6 @@ export class ContractTableComponent implements AfterViewInit, OnInit, AfterViewI
 
   performSearch() {
     // this.dataSource.filter = this.searchText.trim().toLowerCase();
+    
   }
 }

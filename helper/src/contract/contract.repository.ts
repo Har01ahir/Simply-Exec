@@ -107,6 +107,12 @@ export const contractRepository: Pick<ContractRepository, any> = {
 
         contract.vendor_delivery_status = status;
 
+        if (status ===  VendorDeliveryStatus.IN_TRANSIT) {
+            if (contract.status === ContractStatus.INITIAL) {
+                contract.status = ContractStatus.LIVE;
+            }
+        }
+
         contract.save();
 
         return contract;

@@ -5,6 +5,7 @@ import { MatSort } from '@angular/material/sort';
 import { PaymentTableDataSource } from './payment-table-datasource';
 import { Payment } from './payment.model';
 import { HttpClient } from '@angular/common/http';
+import { AppService } from '../app.service';
 
 @Component({
   selector: 'app-payment-table',
@@ -21,7 +22,7 @@ export class PaymentTableComponent implements AfterViewInit, OnInit {
   displayedColumns = ['id', 'contractId', 'amount', 'status', 'created_at'];
 
   constructor(
-    private http: HttpClient
+    private appService: AppService
   ) {
     // this.dataSource = [];
   }
@@ -36,8 +37,10 @@ export class PaymentTableComponent implements AfterViewInit, OnInit {
     this.fetch_payments()
   }
 
-  fetch_payments() {
-    this.http.get<Payment[]>('http://localhost:3000/payment').subscribe(res => {
+  async fetch_payments() {
+    const getPayments = await this.appService.getRequest('/payment')
+    
+    getPayments.subscribe((res: any) => {
       this.dataSource = new PaymentTableDataSource(res)
     })
   }
