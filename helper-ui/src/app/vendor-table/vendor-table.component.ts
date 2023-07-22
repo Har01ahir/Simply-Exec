@@ -4,7 +4,6 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { VendorTableDataSource } from './vendor-table-datasource';
 import { Vendor } from './vendor.model';
-import { HttpClient } from '@angular/common/http';
 import { AppService } from '../app.service';
 
 @Component({

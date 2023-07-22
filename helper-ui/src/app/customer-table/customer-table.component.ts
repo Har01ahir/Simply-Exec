@@ -22,9 +22,7 @@ export class CustomerTableComponent implements AfterViewInit, OnInit {
 
   constructor(
     private appService: AppService
-  ) {
-    // this.dataSource = new CustomerTableDataSource([]);
-  }
+  ) { }
 
   async ngOnInit() {
       const getCustomer = await this.appService.getRequest('/customer')

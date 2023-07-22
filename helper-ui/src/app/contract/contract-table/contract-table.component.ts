@@ -1,9 +1,8 @@
-import { AfterViewInit, Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { MatTable } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort, Sort } from '@angular/material/sort';
 import { ContractTableDataSource } from './contract-table-datasource';
-import { HttpClient } from '@angular/common/http';
 import { Contract } from '../contract.model';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { CustomerPaymentStatus } from '../enum/payment-status.enum';

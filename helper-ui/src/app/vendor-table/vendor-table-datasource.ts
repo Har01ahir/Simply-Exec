@@ -5,8 +5,6 @@ import { map } from 'rxjs/operators';
 import { Observable, of as observableOf, merge } from 'rxjs';
 import { Vendor } from './vendor.model';
 
-
-
 // TODO: replace this with real data from your application
 // const EXAMPLE_DATA: Vendor[] = [];
 

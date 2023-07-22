@@ -4,5 +4,4 @@ export interface Payment {
     amount: number;
     status: string;
     created_at: Date
-  
   }

@@ -23,16 +23,14 @@ export class PaymentTableComponent implements AfterViewInit, OnInit {
 
   constructor(
     private appService: AppService
-  ) {
-    // this.dataSource = [];
-  }
+  ) {}
 
   ngAfterViewInit(): void {
     this.dataSource.sort = this.sort;
     this.dataSource.paginator = this.paginator;
     this.table.dataSource = this.dataSource;
   }
-
+  
   ngOnInit() {
     this.fetch_payments()
   }

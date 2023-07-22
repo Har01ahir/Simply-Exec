@@ -30,10 +30,8 @@ export class CreateContractComponent implements OnInit {
       this.error = error.message;
       console.log(error)
     })
-    
-    
   }
-
+  
   ngOnInit() {
     this.form = new FormGroup({
       'customer': new FormGroup({
@@ -47,7 +45,5 @@ export class CreateContractComponent implements OnInit {
         'email': new FormControl(null, [Validators.required, Validators.email])
       }),
     });
-
   }
-  
 }

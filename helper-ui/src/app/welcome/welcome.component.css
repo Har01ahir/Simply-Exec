@@ -2,7 +2,6 @@
   width: 400px;
   height: 400px;
 }
-
 .btn {
     position: relative;
     top: 100px;
@@ -11,7 +10,6 @@
     border-radius: .25rem;
     color: rgb(74, 121, 239);
     background-color: white;
-    /* background-color:rgb(191, 219, 243); */
     border: 0.0px solid rgb(237, 233, 227);
     margin: 20px;
     text-size-adjust: 40px;
@@ -19,52 +17,6 @@
 .btn:hover {
     border: 1px solid rgb(74, 121, 239);
 }
-
 p {
     color: white;
-  }
-  
-  /* .line-1 {
-    position: relative;
-    top: 50%;  
-    right: 175px;
-    width: 24em;
-    margin: 0 auto;
-    border-right: 2px solid rgba(255,255,255,.75);
-    font-size: 180%;
-    text-align: center;
-    white-space: nowrap;
-    overflow: hidden;
-    transform: translateY(-50%);    
-  } */
-   
-    /* Animation  */ 
-  /*.anim-typewriter{
-  animation: typewriter 4s steps(44) 1s 1 normal both,
-             blinkTextCursor 500ms steps(44) infinite normal;
-  }
-  @keyframes typewriter{
-  from{width: 0;}
-  to{width: 24em;}
-  }
-  @keyframes blinkTextCursor{
-  from{border-right-color: rgba(255,255,255,.75);}
-  to{border-right-color: transparent;}
-  } */
-
-  .typed-out{
-    overflow: hidden;
-    border-right: .15em solid orange;
-    white-space: nowrap;
-    animation: 
-      typing 3s forwards;
-    font-size: 1.6rem;
-    height: 50px;
-    position: relative;
-    top: 300px;
-    left: 420px;
-  }
-  @keyframes typing {
-    from { width: 0 }
-    to { width: 19% }
   }

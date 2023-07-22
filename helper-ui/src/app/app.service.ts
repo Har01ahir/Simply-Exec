@@ -11,9 +11,7 @@ export class AppService {
 
   constructor(
     private http: HttpClient
-  ) { 
-
-  }
+  ) {}
 
 
   async postRequest(api: string, data: any): Promise<any> {
