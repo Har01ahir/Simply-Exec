@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { AppService } from 'src/app/app.service';
 
 @Component({
@@ -15,7 +15,7 @@ export class CreateContractComponent implements OnInit {
   
 
   constructor(
-    private router: Router, 
+    // private router: Router, 
     private activeRoute: ActivatedRoute,
     private appService: AppService
     ) {}
